@@ -42,6 +42,7 @@ class HardwareScanApp extends StatefulWidget {
 }
 
 class _HardwareScanAppState extends State<HardwareScanApp> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   int _selectedIndex = 0;
   Timer? _timer;
 
@@ -106,6 +107,74 @@ class _HardwareScanAppState extends State<HardwareScanApp> {
     }
   }
 
+  void _showMoreCategoriesSheet(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      backgroundColor: AppColors.surfaceDark,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
+      ),
+      builder: (bottomSheetContext) {
+        return SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 16.0),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Container(
+                  width: 36,
+                  height: 4,
+                  decoration: BoxDecoration(
+                    color: AppColors.cardBorder,
+                    borderRadius: BorderRadius.circular(2),
+                  ),
+                ),
+                const SizedBox(height: 12),
+                const Text(
+                  'Diagnostic Categories',
+                  style: TextStyle(
+                    color: AppColors.textPrimary,
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(height: 8),
+                Flexible(
+                  child: ListView(
+                    shrinkWrap: true,
+                    children: kNavItems.asMap().entries.map((entry) {
+                      final idx = entry.key;
+                      final item = entry.value;
+                      final isSelected = _selectedIndex == idx;
+                      return ListTile(
+                        leading: Icon(
+                          item.icon,
+                          color: isSelected ? AppColors.cyanAccent : AppColors.textSecondary,
+                        ),
+                        title: Text(
+                          item.title,
+                          style: TextStyle(
+                            color: isSelected ? AppColors.cyanAccent : AppColors.textPrimary,
+                            fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+                          ),
+                        ),
+                        selected: isSelected,
+                        onTap: () {
+                          setState(() => _selectedIndex = idx);
+                          Navigator.pop(bottomSheetContext);
+                        },
+                      );
+                    }).toList(),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+
   Widget _buildBody() {
     return switch (_selectedIndex) {
       0 => DashboardScreen(
@@ -148,6 +217,7 @@ class _HardwareScanAppState extends State<HardwareScanApp> {
     final isWideScreen = MediaQuery.of(context).size.width > 700;
 
     return Scaffold(
+      key: _scaffoldKey,
       appBar: AppBar(
         backgroundColor: AppColors.surfaceDark,
         elevation: 0,
@@ -262,7 +332,7 @@ class _HardwareScanAppState extends State<HardwareScanApp> {
               currentIndex: _selectedIndex < 4 ? _selectedIndex : 0,
               onTap: (index) {
                 if (index == 4) {
-                  Scaffold.of(context).openDrawer();
+                  _showMoreCategoriesSheet(context);
                 } else {
                   setState(() => _selectedIndex = index);
                 }
