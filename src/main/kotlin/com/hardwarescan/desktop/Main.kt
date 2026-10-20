@@ -15,7 +15,7 @@ fun main() = application {
     Window(
         onCloseRequest = ::exitApplication,
         state = windowState,
-        title = "Hardware Scan - PC Diagnostics"
+        title = "Hardware Scan All - PC Diagnostics"
     ) {
         HardwareScanTheme {
             HardwareScanApp(scanner = scanner)
