@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- Modern Hardware Chip Icon -->
+    <path
+        android:fillColor="#6366F1"
+        android:pathData="M34,34h40v40h-40z"/>
+    <path
+        android:fillColor="#A855F7"
+        android:pathData="M42,42h24v24h-24z"/>
+    <path
+        android:fillColor="#10B981"
+        android:pathData="M48,48h12v12h-12z"/>
+    <!-- Chip Pins Top & Bottom -->
+    <path
+        android:fillColor="#6366F1"
+        android:pathData="M38,26h4v8h-4z M48,26h4v8h-4z M58,26h4v8h-4z M66,26h4v8h-4z M38,74h4v8h-4z M48,74h4v8h-4z M58,74h4v8h-4z M66,74h4v8h-4z"/>
+    <!-- Chip Pins Left & Right -->
+    <path
+        android:fillColor="#6366F1"
+        android:pathData="M26,38h8v4h-8z M26,48h8v4h-8z M26,58h8v4h-8z M26,66h8v4h-8z M74,38h8v4h-8z M74,48h8v4h-8z M74,58h8v4h-8z M74,66h8v4h-8z"/>
+</vector>
