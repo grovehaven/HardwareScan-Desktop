@@ -141,7 +141,7 @@ class StorageScreen extends StatelessWidget {
         ),
         const SizedBox(height: 16),
         const Text(
-          'Numbers of File Types Stored',
+          'File Types Stored',
           style: TextStyle(
             color: AppColors.textPrimary,
             fontSize: 20,
