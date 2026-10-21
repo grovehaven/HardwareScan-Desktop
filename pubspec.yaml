@@ -2,7 +2,7 @@ name: hardwarescan
 description: "Hardware Scan All - Cross-Platform Mobile & Desktop Hardware Diagnostics"
 publish_to: 'none'
 
-version: 6.0.0+17
+version: 6.0.0+18
 
 environment:
   sdk: ^3.5.0
