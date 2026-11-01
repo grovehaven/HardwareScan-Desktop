@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <base href="$FLUTTER_BASE_HREF">
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="Hardware Scan All - Real-time Hardware Telemetry and Web Diagnostics">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Hardware Scan All">
+  <meta name="theme-color" content="#0F172A">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+  <link rel="icon" type="image/png" href="favicon.png"/>
+  <title>Hardware Scan All - Web Diagnostics</title>
+  <link rel="manifest" href="manifest.json">
+  <style>
+    body {
+      background-color: #0F172A;
+      color: #F8FAFC;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+    .loading-container {
+      text-align: center;
+    }
+    .chip-icon {
+      width: 80px;
+      height: 80px;
+      background: #1E293B;
+      border: 2px solid #06B6D4;
+      border-radius: 16px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 auto 20px;
+      box-shadow: 0 0 20px rgba(6, 182, 212, 0.3);
+      animation: pulse 2s infinite ease-in-out;
+    }
+    .chip-icon svg {
+      width: 48px;
+      height: 48px;
+      fill: #06B6D4;
+    }
+    .title {
+      font-size: 24px;
+      font-weight: bold;
+      color: #F8FAFC;
+      margin-bottom: 8px;
+    }
+    .subtitle {
+      font-size: 14px;
+      color: #94A3B8;
+      margin-bottom: 24px;
+    }
+    .progress-bar {
+      width: 200px;
+      height: 4px;
+      background: #182234;
+      border-radius: 2px;
+      overflow: hidden;
+      margin: 0 auto;
+    }
+    .progress-fill {
+      width: 100%;
+      height: 100%;
+      background: #06B6D4;
+      animation: loading 1.5s infinite ease-in-out;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); box-shadow: 0 0 15px rgba(6, 182, 212, 0.2); }
+      50% { transform: scale(1.05); box-shadow: 0 0 30px rgba(6, 182, 212, 0.5); }
+      100% { transform: scale(1); box-shadow: 0 0 15px rgba(6, 182, 212, 0.2); }
+    }
+    @keyframes loading {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
+  </style>
+</head>
+<body>
+  <div class="loading-container" id="loading">
+    <div class="chip-icon">
+      <svg viewBox="0 0 24 24">
+        <path d="M6 2H8V4H16V2H18V4H20C21.1 4 22 4.9 22 6V8H24V10H22V14H24V16H22V18C22 19.1 21.1 20 20 20H18V22H16V20H8V22H6V20H4C2.9 20 2 19.1 2 18V16H0V14H2V10H0V8H2V6C2 4.9 2.9 4 4 4H6V2ZM4 6V18H20V6H4ZM7 7H17V17H7V7Z"/>
+      </svg>
+    </div>
+    <div class="title">Hardware <span style="color: #06B6D4;">Scan All</span></div>
+    <div class="subtitle">Initializing Web Diagnostic Telemetry...</div>
+    <div class="progress-bar">
+      <div class="progress-fill"></div>
+    </div>
+  </div>
+  <script src="flutter_bootstrap.js" async></script>
+</body>
+</html>
