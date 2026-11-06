@@ -14,7 +14,7 @@ class InfoRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 4.0),
+      padding: const EdgeInsets.symmetric(vertical: 2.5),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -23,7 +23,7 @@ class InfoRow extends StatelessWidget {
               label,
               style: const TextStyle(
                 color: AppColors.textSecondary,
-                fontSize: 14,
+                fontSize: 13,
               ),
             ),
           ),
@@ -34,7 +34,7 @@ class InfoRow extends StatelessWidget {
               textAlign: TextAlign.end,
               style: const TextStyle(
                 color: AppColors.textPrimary,
-                fontSize: 14,
+                fontSize: 13,
                 fontWeight: FontWeight.w500,
               ),
             ),

@@ -29,7 +29,7 @@ class DashboardScreen extends StatelessWidget {
     final primaryDrive = partitions.isNotEmpty ? partitions.first : null;
 
     return ListView(
-      padding: const EdgeInsets.all(16.0),
+      padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 8.0),
       children: [
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -42,16 +42,16 @@ class DashboardScreen extends StatelessWidget {
                     'Hardware Diagnostics',
                     style: TextStyle(
                       color: AppColors.textPrimary,
-                      fontSize: 24,
+                      fontSize: 18,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  SizedBox(height: 2),
+                  SizedBox(height: 1),
                   Text(
                     'Real-time telemetry and component inspection',
                     style: TextStyle(
                       color: AppColors.textSecondary,
-                      fontSize: 13,
+                      fontSize: 11,
                     ),
                   ),
                 ],
@@ -59,27 +59,29 @@ class DashboardScreen extends StatelessWidget {
             ),
             ElevatedButton.icon(
               onPressed: onOpenUpgrades,
-              icon: const Icon(Icons.trending_up, size: 18),
-              label: const Text('Upgrade Path', style: TextStyle(fontWeight: FontWeight.bold)),
+              icon: const Icon(Icons.trending_up, size: 14),
+              label: const Text('Upgrade Path', style: TextStyle(fontSize: 11, fontWeight: FontWeight.bold)),
               style: ElevatedButton.styleFrom(
                 backgroundColor: AppColors.cyanAccent,
                 foregroundColor: AppColors.darkBackground,
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(6)),
               ),
             ),
           ],
         ),
-        const SizedBox(height: 16),
+        const SizedBox(height: 8),
         LayoutBuilder(
           builder: (context, constraints) {
             int crossAxisCount = constraints.maxWidth > 700 ? 4 : (constraints.maxWidth > 400 ? 2 : 1);
+            double aspectRatio = constraints.maxWidth > 700 ? 2.1 : (constraints.maxWidth > 400 ? 1.6 : 2.0);
             return GridView.count(
               crossAxisCount: crossAxisCount,
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
-              crossAxisSpacing: 12,
-              mainAxisSpacing: 12,
-              childAspectRatio: 1.4,
+              crossAxisSpacing: 8,
+              mainAxisSpacing: 8,
+              childAspectRatio: aspectRatio,
               children: [
                 MetricCard(
                   title: 'CPU Utilization',
@@ -118,10 +120,10 @@ class DashboardScreen extends StatelessWidget {
             );
           },
         ),
-        const SizedBox(height: 16),
+        const SizedBox(height: 8),
         Card(
           child: Padding(
-            padding: const EdgeInsets.all(20.0),
+            padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 8.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -129,13 +131,13 @@ class DashboardScreen extends StatelessWidget {
                   'System Summary',
                   style: TextStyle(
                     color: AppColors.textPrimary,
-                    fontSize: 18,
+                    fontSize: 14,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                const SizedBox(height: 12),
+                const SizedBox(height: 4),
                 const Divider(),
-                const SizedBox(height: 8),
+                const SizedBox(height: 2),
                 InfoRow(label: 'Operating System', value: sys?.osName ?? 'N/A'),
                 InfoRow(label: 'OS Build / Kernel', value: sys?.osBuild ?? 'N/A'),
                 InfoRow(label: 'Manufacturer & Model', value: '${sys?.motherboardManufacturer ?? ""} ${sys?.motherboardModel ?? ""}'),

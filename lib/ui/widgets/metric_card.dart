@@ -23,23 +23,23 @@ class MetricCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       child: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 8.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Row(
               children: [
                 if (icon != null) ...[
-                  Icon(icon, color: progressColor, size: 22),
-                  const SizedBox(width: 8),
+                  Icon(icon, color: progressColor, size: 16),
+                  const SizedBox(width: 4),
                 ],
                 Expanded(
                   child: Text(
                     title,
                     style: const TextStyle(
                       color: AppColors.textSecondary,
-                      fontSize: 13,
+                      fontSize: 11,
                       fontWeight: FontWeight.w500,
                     ),
                     maxLines: 1,
@@ -48,39 +48,34 @@ class MetricCard extends StatelessWidget {
                 ),
               ],
             ),
-            const SizedBox(height: 8),
             Text(
               value,
               style: const TextStyle(
                 color: AppColors.textPrimary,
-                fontSize: 22,
+                fontSize: 18,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            if (subtitle.isNotEmpty) ...[
-              const SizedBox(height: 2),
+            if (subtitle.isNotEmpty)
               Text(
                 subtitle,
                 style: const TextStyle(
                   color: AppColors.textMuted,
-                  fontSize: 12,
+                  fontSize: 10,
                 ),
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
               ),
-            ],
-            if (progress != null) ...[
-              const SizedBox(height: 12),
+            if (progress != null)
               ClipRRect(
-                borderRadius: BorderRadius.circular(3),
+                borderRadius: BorderRadius.circular(2),
                 child: LinearProgressIndicator(
                   value: progress!.clamp(0.0, 1.0),
-                  minHeight: 6,
+                  minHeight: 4,
                   color: progressColor,
                   backgroundColor: AppColors.darkBackground,
                 ),
               ),
-            ],
           ],
         ),
       ),
